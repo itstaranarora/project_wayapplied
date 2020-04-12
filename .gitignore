@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+.vscode
 
 # testing
 /coverage
@@ -11,10 +12,15 @@
 # production
 /build
 
+# env varialbes
+.env
+.flaskenv
+
 # misc
 .DS_Store
 .env.local
 .env.development.local
+__pycache__
 .env.test.local
 .env.production.local
 
