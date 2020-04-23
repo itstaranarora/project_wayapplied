@@ -6,17 +6,29 @@ class Websites:
     def all(self):
         with Database() as db:
             db.execute("SELECT websites.website_id AS id,websites.website_name AS name, websites.img_path,websites.url,websites.description,websites.status,categories.name AS category_name FROM websites INNER JOIN website_cat ON websites.website_id = website_cat.website_id INNER JOIN categories ON categories.category_id = website_cat.category_id;")
-            return db.fetchall()
+            websites = db.fetchall()
+        if not websites:
+            return jsonify({"msg": "table is emptey"})
+        else:
+            return websites
 
     def getWebsiteById(self, id):
         with Database() as db:
-            db.execute("SELECT website_id FROM websites;")
-            website_ids = db.fetchall()
-            for website_id in website_ids:
-                if website_id['website_id'] == id:
-                    db.execute("SELECT websites.website_id AS id,websites.website_name AS name, websites.img_path,websites.url,websites.description,websites.status,categories.name AS category_name FROM websites INNER JOIN website_cat ON websites.website_id = website_cat.website_id INNER JOIN categories ON categories.category_id = website_cat.category_id WHERE websites.website_id = %s", [id])
-                    return db.fetchone()
-            return {"error":"Invalid ID"}
+            db.execute("SELECT websites.website_id AS id,websites.website_name AS name, websites.img_path,websites.url,websites.description,websites.status,categories.name AS category_name FROM websites INNER JOIN website_cat ON websites.website_id = website_cat.website_id INNER JOIN categories ON categories.category_id = website_cat.category_id WHERE websites.website_id = %s", [id])
+            result = db.fetchone()
+        if not result:
+            return {"error":"invalid id"}
+        else:
+            return result
+
+    def getWebsite(self, id):
+        with Database() as db:
+            db.execute("SELECT websites.website_id AS id,websites.website_name AS name, websites.img_path,websites.url,websites.description,websites.status,categories.name AS category_name FROM websites INNER JOIN website_cat ON websites.website_id = website_cat.website_id INNER JOIN categories ON categories.category_id = website_cat.category_id WHERE websites.website_id = %s AND websites.status = 1 ", [id])
+            result = db.fetchone()
+        if not result:
+            return {"error":"invalid id"}
+        else:
+            return result
 
     def getCategories(self):
         with Database() as db:
@@ -58,7 +70,11 @@ class Websites:
             conduction = 0
         with Database() as db:
             db.execute("SELECT websites.website_id,websites.website_name,websites.img_path,websites.url,websites.description,websites.status,categories.name FROM websites INNER JOIN website_cat ON websites.website_id = website_cat.website_id INNER JOIN categories ON categories.category_id = website_cat.category_id WHERE websites.status = %s;", [conduction])
-            return db.fetchall()
+            result = db.fetchall()
+        if not result:
+            return {"msg": "table is emptey"}
+        else:
+            return result
 
     def add(self, name, url, user_email, description, category_id):
         args = [name, url, description,user_email]

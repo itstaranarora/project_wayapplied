@@ -10,9 +10,11 @@ flask = "*"
 flask-mysqldb = "*"
 python-dotenv = "*"
 flask-marshmallow = "*"
+pip = "*"
+flask-cors = "*"
 
 [requires]
-python_version = "3.6"
+python_version = "3.7.5"
 
 [pipenv]
 allow_prereleases = true

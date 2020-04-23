@@ -1,0 +1,64 @@
+@media screen and (min-width: 968px) {
+  .navbar {
+    display: inline-flex;
+    align-items: center;
+    padding: 1.6rem 0rem;
+    width: 100%;
+    .logo {
+      order: 1;
+      width: 25%;
+      font-size: 2rem;
+    }
+    .main-nav {
+      display: flex;
+      justify-content: center;
+      width: 50%;
+      order: 2;
+      .nav-links {
+        margin: -1rem;
+        font-size: 1.2rem;
+        font-weight: 800;
+      }
+    }
+    .search {
+      order: 3;
+      width: 25%;
+      display: flex;
+      cursor: pointer;
+      span {
+        display: flex;
+        cursor: pointer;
+        margin-left: 1rem;
+      }
+    }
+    .navbar-toggle {
+      display: none;
+    }
+    .main-nav {
+      display: flex;
+    }
+  }
+
+  // Home Page
+  // Home Page
+  .heading-component {
+    text-align: center;
+    margin-top: 4rem;
+    .page-title {
+      color: $primary-color;
+      font-size: 3rem;
+    }
+    .page-discription {
+      color: $dark-color;
+      font-size: 1.8rem;
+      margin-top: 1.1rem;
+      font-weight: normal;
+    }
+    .categories-box {
+      position: absolute;
+      right: 35%;
+      left: 35%;
+      width: 30%;
+    }
+  }
+}

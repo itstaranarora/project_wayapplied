@@ -4,38 +4,32 @@ from ..model import Websites
 admin = Blueprint("admin", __name__, url_prefix="/api/admin")
 
 # Get All Websites
-@admin.route("/getAll", methods=["GET"])
+@admin.route("/websites", methods=["GET"])
 def getAll():
-    websites = Websites().all()
-    if not websites:
-        return jsonify({"msg": "table is emptey"})
-    else:
-        return jsonify(websites)
+    return jsonify(Websites().all())
 
-@admin.route("/toggleStatus/<int:id>", methods=["PUT"])
+# Get Website by Id from all
+@admin.route("/website/<int:id>", methods=['GET'])
+def getWebsite(id):
+    return jsonify(Websites().getWebsiteById(id))
+
+# Change Website Status
+@admin.route("/website/<int:id>/toggle-status", methods=["PUT"])
 def toggleStatus(id):
     return (jsonify(Websites().toggleStatus(id)))
 
-#Delete a websites
-@admin.route("/deleteById/<int:id>", methods=["DELETE"])
+#Delete a website
+@admin.route("/website/<int:id>/delete", methods=["DELETE"])
 def deleteWebsite(id):
     return jsonify(Websites().deleteById(id))
 
 # Get Published Websites
-@admin.route("/getPublished", methods=["GET"])
+@admin.route("/websites/published", methods=["GET"])
 def Published():
-    published_websites = Websites().allByStatus()
-    if not published_websites:
-        return jsonify({"msg": "table is emptey"})
-    else:
-        return jsonify(published_websites)
+    return jsonify(Websites().allByStatus())
 
 
 # Get Unpublished Websites
-@admin.route("/getUnpublished", methods=["GET"])
+@admin.route("websites/unpublished", methods=["GET"])
 def Unpublished():
-    unpublished_websites = Websites().allByStatus(False)
-    if not unpublished_websites:
-        return jsonify({"msg": "table is emptey"})
-    else:
-        return jsonify(unpublished_websites)
+    return jsonify(Websites().allByStatus(False))

@@ -4,7 +4,7 @@ from ..model import Websites
 public = Blueprint("public", __name__, url_prefix="/api/public")
 
 
-@public.route("/submit", methods=["POST"])
+@public.route("/submit/website", methods=["POST"])
 def submit():
     email = request.json["email"]
     name = request.json["name"]
@@ -15,10 +15,12 @@ def submit():
     result = Websites().add(*args)
     return jsonify(result)
 
-@public.route("/<int:id>", methods=['GET'])
+# Get Published Website
+@public.route("/website/<int:id>", methods=['GET'])
 def getWebsite(id):
-    return jsonify(Websites().getWebsiteById(id))
+    return jsonify(Websites().getWebsite(id))
 
-@public.route("/categories", methods=['GET'])
-def categories():
+# Get Website Categories
+@public.route("/websites/categories", methods=['GET'])
+def categories(): 
     return jsonify(Websites().getCategories())
