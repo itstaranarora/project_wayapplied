@@ -42,7 +42,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/about" className="nav-links">
+          <Link to="/submit" className="nav-links">
             submit
           </Link>
         </li>

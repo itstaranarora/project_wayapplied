@@ -7,10 +7,13 @@
   box-sizing: border-box;
 }
 
-body {
+body,
+.App {
   font-family: 'Overpass', sans-serif;
   font-size: 1rem;
   line-height: 1.6;
+  height: 100%;
+  width: 100%;
   background-color: #ecf5f9;
   color: #333;
 }
@@ -166,6 +169,66 @@ img {
   .boxactive {
     display: flex;
   }
+}
+
+// Submit Form
+.submit-form {
+  text-align: center;
+  background-color: $primary-color;
+  padding-top: 2rem;
+  padding-bottom: 200px;
+  h1 {
+    font-size: 1.7rem;
+    text-transform: capitalize;
+    margin-bottom: 1.5rem;
+  }
+  input {
+    width: 80%;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid $light-color;
+  }
+  .submit-btn {
+    background-color: $danger-color;
+    border: none;
+    color: $light-color;
+    font-size: 1rem;
+    &:hover {
+      color: $danger-color;
+      background-color: white;
+      cursor: pointer;
+    }
+  }
+  .category-selector {
+    width: 80%;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 0.5rem;
+    background-color: white;
+    border: 1px solid $light-color;
+    font-size: 0.9rem;
+    text-transform: capitalize;
+    color: $dark-color;
+  }
+  .success {
+    text-transform: capitalize;
+    font-size: 1rem;
+    margin: 1rem;
+  }
+}
+
+// Footer
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: $primary-color;
+  color: white;
+  height: 4rem;
+  padding: 1.5rem;
+  text-align: center;
 }
 
 @import '_desktop';

@@ -7,10 +7,10 @@ public = Blueprint("public", __name__, url_prefix="/api/public")
 @public.route("/submit/website", methods=["POST"])
 def submit():
     email = request.json["email"]
-    name = request.json["name"]
+    name = request.json["website"]
     url = request.json["url"]
     description = request.json["description"]
-    category_id = request.json["category_id"]
+    category_id = request.json["category"]
     args = [name, url, email, description, category_id]
     result = Websites().add(*args)
     return jsonify(result)

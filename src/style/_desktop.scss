@@ -7,7 +7,7 @@
     .logo {
       order: 1;
       width: 25%;
-      font-size: 2rem;
+      font-size: 2.5rem;
     }
     .main-nav {
       display: flex;
@@ -59,6 +59,31 @@
       right: 35%;
       left: 35%;
       width: 30%;
+    }
+  }
+
+  // Submit Form
+  .submit-form {
+    padding-top: 4rem;
+    h1 {
+      font-size: 3rem;
+    }
+    input {
+      width: 50%;
+      padding: 2rem;
+      font-size: 1.3rem;
+    }
+    .submit-btn {
+      font-size: 1.5rem;
+      color: white;
+    }
+    .category-selector {
+      width: 50%;
+      padding: 2rem;
+      font-size: 1.2rem;
+    }
+    .success {
+      font-size: 1.5rem;
     }
   }
 }

@@ -84,7 +84,9 @@ class Websites:
             db.execute("SET @website_key = LAST_INSERT_ID();")
             db.execute("SELECT @website_key;")
             website_key = db.fetchone()
-            args = [category_id,website_key['@website_key']]
+            db.execute("SELECT category_id from categories WHERE name=%s", [category_id])
+            category_key = db.fetchone()
+            args = [category_key['category_id'],website_key['@website_key']]
             db.execute("INSERT INTO website_cat( category_id , website_id ) VALUES(%s,%s);", args)
             db.execute("COMMIT;")
         return {"msg":"Inserted"}

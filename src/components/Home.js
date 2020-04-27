@@ -1,5 +1,5 @@
 import Heading from './includes/Heading';
-import React, { useEffect } from 'react';
+import React from 'react';
 
 const Home = () => {
   return (
